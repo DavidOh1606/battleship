@@ -15,7 +15,7 @@ describe("ship tests", () => {
         shipThree = new Ship(2);
         shipFour = new Ship(1);
 
-    })
+    });
 
     test("ship test 1", () => {
         expect(shipOne.length).toBe(4);
@@ -62,6 +62,26 @@ describe("ship tests", () => {
 });
 
 describe("gameboard tests", () => {
+    let gameboardOne;
+    let gameboardTwo;
+
+    beforeEach(() => {
+        gameboardOne = new GameBoard(8, 8);
+        gameboardTwo = new GameBoard(4, 12);
+    });
+
+    test("gameboard test 1", () => {
+        expect(gameboardOne.board.length).toBe(8);
+        expect(gameboardOne.board[0].length).toBe(8);
+
+        expect(gameboardTwo.board.length).toBe(4);
+        expect(gameboardTwo.board[0].length).toBe(12);
+    });
+
+    test("gameboard test 2", () => {
+
+    });
+
 
 });
 
