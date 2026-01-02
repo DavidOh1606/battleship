@@ -109,7 +109,13 @@ describe("gameboard tests", () => {
         expect(gameboardOne.board[0][1].hit).toBe(true);
 
         expect(() => gameboardOne.receiveAttack(0, 0)).toThrow("Tile has already been attacked");
+        expect(gameboardOne.allShipsSunk()).toBe(false);
 
+        gameboardOne.receiveAttack(1, 0);
+        gameboardOne.receiveAttack(2, 0);
+        gameboardOne.receiveAttack(3, 0);
+
+        expect(gameboardOne.allShipsSunk()).toBe(true);
     });
 
 

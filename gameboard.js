@@ -44,6 +44,18 @@ function GameBoard(width, length) {
         }
     }
 
+    this.allShipsSunk = function() {
+        for (let row = 0; row < this.board.length; row++) {
+            for (let col = 0; col < this.board[0].length; col++) {
+                if (this.board[row][col].ship !== null && !this.board[row][col].hit) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
 }
 
 module.exports = GameBoard;
