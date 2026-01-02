@@ -79,6 +79,36 @@ describe("gameboard tests", () => {
     });
 
     test("gameboard test 2", () => {
+        const shipOne = new Ship(4);
+        const shipTwo = new Ship(3);
+
+        gameboardOne.placeShip(shipOne, 4, 6);
+
+        expect(gameboardOne.board[3][6].ship).toBe(null);
+        expect(gameboardOne.board[4][6].ship).toBe(shipOne);
+        expect(gameboardOne.board[5][6].ship).toBe(shipOne);
+        expect(gameboardOne.board[6][6].ship).toBe(shipOne);
+        expect(gameboardOne.board[7][6].ship).toBe(shipOne);
+
+        expect(() => gameboardOne.placeShip(shipTwo, 4, 6)).toThrow("Overlapping other ship");
+        expect(() => gameboardOne.placeShip(shipTwo, -1, -1)).toThrow("Invalid placement");
+        expect(() => gameboardOne.placeShip(shipTwo, 7, 7)).toThrow("Invalid placement");
+    });
+
+    test("gameboard test 3", () => {
+        const ship = new Ship(4);
+
+        gameboardOne.placeShip(ship, 0, 0);
+        gameboardOne.receiveAttack(0, 0);
+
+        expect(ship.timesHit).toBe(1);
+        expect(gameboardOne.board[0][0].hit).toBe(true);
+
+        gameboardOne.receiveAttack(0, 1);
+        expect(ship.timesHit).toBe(1);
+        expect(gameboardOne.board[0][1].hit).toBe(true);
+
+        expect(() => gameboardOne.receiveAttack(0, 0)).toThrow("Tile has already been attacked");
 
     });
 
