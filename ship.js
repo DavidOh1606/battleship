@@ -17,9 +17,6 @@ function Ship(length) {
 
         return false;
     }
-
-
 }
-
 
 module.exports = Ship;

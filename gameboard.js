@@ -19,7 +19,7 @@ function GameBoard(width, length) {
         this.board.push(rowArr);
     }
 
-    this.placeShip = function(ship, row, col) {
+    this.placeShip = function(ship, row, col, vertical = true) {
         if (row <= -1 || col <= -1 || row > width - ship.length || col > length - 1) {
             throw new Error("Invalid placement");
         }
@@ -34,6 +34,16 @@ function GameBoard(width, length) {
         for (let i = row; i < row + ship.length; i++) {
             this.board[i][col].ship = ship;
         }
+    }
+
+    function placeShipVertical(ship, row, col) {
+        if (row <= -1 || col <= -1 || row > width - ship.length || col > length - 1) {
+
+        }
+    }
+
+    function placeShipHorizontal(ship, row, col) {
+
     }
 
     this.rotateShip = function(row, col) {
@@ -96,8 +106,8 @@ function GameBoard(width, length) {
     }
 
     this.allShipsSunk = function() {
-        for (let row = 0; row < this.board.length; row++) {
-            for (let col = 0; col < this.board[0].length; col++) {
+        for (let row = 0; row < width; row++) {
+            for (let col = 0; col < length; col++) {
                 if (this.board[row][col].ship !== null && !this.board[row][col].hit) {
                     return false;
                 }
