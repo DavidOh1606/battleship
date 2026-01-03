@@ -90,7 +90,9 @@ describe("gameboard tests", () => {
         expect(gameboardOne.board[6][6].ship).toBe(shipOne);
         expect(gameboardOne.board[7][6].ship).toBe(shipOne);
 
-        expect(() => gameboardOne.placeShip(shipTwo, 4, 6)).toThrow("Overlapping other ship");
+        expect(() => gameboardOne.placeShip(shipTwo, 3, 6)).toThrow("Overlapping other ship");
+        expect(gameboardOne.board[3][6].ship).toBe(null);
+
         expect(() => gameboardOne.placeShip(shipTwo, -1, -1)).toThrow("Invalid placement");
         expect(() => gameboardOne.placeShip(shipTwo, 7, 7)).toThrow("Invalid placement");
     });
@@ -118,7 +120,9 @@ describe("gameboard tests", () => {
         expect(gameboardOne.allShipsSunk()).toBe(true);
     });
 
+    test("gameboard test 4", () => {
 
+    });
 });
 
 describe("player tests", () => {
